@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.Loops", "CSharpTrainingSolution\2.Loops.csproj", "{8B53EC96-D408-4776-AC44-3D997D073438}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.InputOutputOperations", "ConsoleApplication1\1.InputOutputOperations.csproj", "{63525761-E2DA-4B8E-B6EC-A1CABAD11D00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TronGame", "TronGame\TronGame.csproj", "{339F3F45-9961-4984-885A-124592F62482}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B53EC96-D408-4776-AC44-3D997D073438}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B53EC96-D408-4776-AC44-3D997D073438}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B53EC96-D408-4776-AC44-3D997D073438}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B53EC96-D408-4776-AC44-3D997D073438}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63525761-E2DA-4B8E-B6EC-A1CABAD11D00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63525761-E2DA-4B8E-B6EC-A1CABAD11D00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63525761-E2DA-4B8E-B6EC-A1CABAD11D00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63525761-E2DA-4B8E-B6EC-A1CABAD11D00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{339F3F45-9961-4984-885A-124592F62482}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{339F3F45-9961-4984-885A-124592F62482}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{339F3F45-9961-4984-885A-124592F62482}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{339F3F45-9961-4984-885A-124592F62482}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+EndGlobal
