@@ -56,10 +56,11 @@ namespace TronGame
             if (key.Key == ConsoleKey.DownArrow)
                 secondPlayerDirection = down;
         }
-        static void WriteOnPosition(int x, int y, char ch)
+        static void WriteOnPosition(int x, int y, char ch, ConsoleColor color)
         {
+            Console.ForegroundColor = color;
             Console.SetCursorPosition(x, y);
-            Console.WriteLine(ch); 
+            Console.Write(ch);
         }
         static void MovePlayers()
         {
@@ -95,7 +96,7 @@ namespace TronGame
             if (secondPlayerDirection == down)
             {
                 secondPlayerRow++;
-            }    
+            }
 
 
         }
@@ -113,10 +114,10 @@ namespace TronGame
             secondPlayerRow = Console.WindowHeight / 2;
         }
         static int IsGameOver()
-        {            
-                // 0 =>g game is still active
-                // 1 => firstPlayerWins
-                // 2 => secondPlayerWins
+        {
+            // 0 =>g game is still active
+            // 1 => firstPlayerWins
+            // 2 => secondPlayerWins
             if (firstPlayerRow < 0)
                 return 2;
             if (firstPlayerColumn < 0)
@@ -138,53 +139,110 @@ namespace TronGame
             if (IsUsed[firstPlayerColumn, firstPlayerRow])
                 return 2;
             if (IsUsed[secondPlayerColumn, secondPlayerRow])
-                return 1;            
+                return 1;
             return 0;
 
 
         }
         static void ResetGame()
         {
-            Console.Clear();
-            Console.WriteLine("Press any key to start new Game");
+            IsUsed = new bool[Console.WindowWidth, Console.WindowHeight];
+            SetGameField();
+            firstPlayerDirection = right;
+            secondPlayerDirection = left;
+            Console.WriteLine("Press any key to start game again...");
             Console.ReadKey();
+            Console.Clear();
+            MovePlayers();
+        }
+        static bool DoesPlayerLose(int row, int col)
+        {
+            if (row < 0)
+            {
+                return true;
+            }
+            if (col < 0)
+            {
+                return true;
+            }
+            if (row >= Console.WindowHeight)
+            {
+                return true;
+            }
+            if (col >= Console.WindowWidth)
+            {
+                return true;
+            }
+
+            if (IsUsed[col, row])
+            {
+                return true;
+            }
+
+            return false;
         }
 
         static void Main(string[] args)
         {
-            
-
             SetGameField();
             IsUsed = new bool[Console.WindowWidth, Console.WindowHeight];
-            while(true)
+
+            while (true)
             {
                 if (Console.KeyAvailable)
                 {
-                    ConsoleKeyInfo key = Console.ReadKey();
+                    ConsoleKeyInfo key = Console.ReadKey(true);
                     ChangePlayerDirection(key);
                 }
 
                 MovePlayers();
-                int winner = IsGameOver();
-                if (winner > 0)
+
+                bool firstPlayerLoses = DoesPlayerLose(firstPlayerRow, firstPlayerColumn);
+                bool secondPlayerLoses = DoesPlayerLose(secondPlayerRow, secondPlayerColumn);
+
+                if (firstPlayerLoses && secondPlayerLoses)
                 {
+                    firstPlayerScore++;
+                    secondPlayerScore++;
+                    Console.WriteLine();
                     Console.WriteLine("Game over");
-                    if (winner == 1)
-                        Console.WriteLine("First Player Win");
-                    if (winner == 2)
-                        Console.WriteLine("Second Player Win");
-                    Environment.Exit(0);
+                    Console.WriteLine("Draw game!!!");
+                    Console.WriteLine("Current score: {0} - {1}", firstPlayerScore, secondPlayerScore);
+                    ResetGame();
                 }
-                IsGameOver();
+                if (firstPlayerLoses)
+                {
+                    secondPlayerScore++;
+                    Console.WriteLine();
+                    Console.WriteLine("Game over");
+                    Console.WriteLine("Second player wins!!!");
+                    Console.WriteLine("Current score: {0} - {1}", firstPlayerScore, secondPlayerScore);
+                    ResetGame();
+                }
+                if (secondPlayerLoses)
+                {
+                    firstPlayerScore++;
+                    Console.WriteLine();
+                    Console.WriteLine("Game over");
+                    Console.WriteLine("First player wins!!!");
+                    Console.WriteLine("Current score: {0} - {1}", firstPlayerScore, secondPlayerScore);
+                    ResetGame();
+                }
+
                 IsUsed[firstPlayerColumn, firstPlayerRow] = true;
                 IsUsed[secondPlayerColumn, secondPlayerRow] = true;
-                WriteOnPosition(firstPlayerColumn, firstPlayerRow, '*');
-                WriteOnPosition(secondPlayerColumn, secondPlayerRow, '#');
-                Thread.Sleep(200);               
 
+                WriteOnPosition(firstPlayerColumn, firstPlayerRow, '*', ConsoleColor.Yellow);
+                WriteOnPosition(secondPlayerColumn, secondPlayerRow, '*', ConsoleColor.Cyan);
+
+                Thread.Sleep(100);
             }
+
         }
-
     }
-
 }
+
+
+
+
+
