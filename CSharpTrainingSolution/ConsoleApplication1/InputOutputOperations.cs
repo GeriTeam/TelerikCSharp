@@ -44,14 +44,18 @@ namespace ConsoleApplication1
 
             //зад. 4 Сметки лице на триъгълник и правоъгълник
 
-            Console.WriteLine("This program calcultes " + "the area of rectangle or a triangle");
-            Console.Write("Enter a and b for (rectangle): " + "or a and h (for triangle): ");
-            int a = int.Parse(Console.ReadLine());
-            int b = int.Parse(Console.ReadLine());
-            Console.Write("Enter 1 for a rectangle or" + "for 2 triangle: ");
-            int choice = int.Parse(Console.ReadLine());
-            double area = (double) (a*b) / choice; //Tip: Всъщност делин на choice когато потребителя реши 1 или 2 да избере :)  
-            Console.WriteLine("The area of your rectangle" + "is {0}", area);
+            //Console.WriteLine("This program calcultes " + "the area of rectangle or a triangle");
+            //Console.Write("Enter a and b for (rectangle): " + "or a and h (for triangle): ");
+            //int a = int.Parse(Console.ReadLine());
+            //int b = int.Parse(Console.ReadLine());
+            //Console.Write("Enter 1 for a rectangle or" + "for 2 triangle: ");
+            //int choice = int.Parse(Console.ReadLine());
+            //double area = (double) (a*b) / choice; //Tip: Всъщност делин на choice когато потребителя реши 1 или 2 да избере :)  
+            //Console.WriteLine("The area of your rectangle" + "is {0}", area);
+
+
+
+
 
 
         }
